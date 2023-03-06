@@ -4,14 +4,12 @@ pipeline {
 
     stage('Build image') {        
       steps {
-        sh 'pwd'
-        sh 'whoami'
-        sh 'id'
-        script {
-          def customImage = docker.build("my-image:${env.BUILD_ID}")
-        }
-
+         script {
+           app = docker.build("my-app-image:latest", "./")
+          }
        }
+    }
+    stage('Test image') {   
 
     
           
@@ -22,11 +20,9 @@ pipeline {
     
     
   
-    }
-    stage('Test image') {   
       steps {
         script {
-          customImage.inside {            
+          app.inside {            
           sh 'echo "Tests passed"'        
           }
         }
@@ -36,8 +32,8 @@ pipeline {
       steps {
         script {
           docker.withRegistry('https://core.harbor.domain', 'harbor admin') {            
-            customImage.push("${env.BUILD_NUMBER}")            
-            customImage.push("latest")        
+            app.push("${env.BUILD_NUMBER}")            
+            app.push("latest")        
     } 
      }
       }    
