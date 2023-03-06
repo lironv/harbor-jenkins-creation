@@ -5,11 +5,8 @@ pipeline {
      
     stage('Build image') {        
       steps {
-        sh """pwd
-              echo $PATH 
-              id
-              docker build -t lironv/attendance:latest .
-           """
+        def customImage = docker.build("my-image:${env.BUILD_ID}")
+
         
        }
     }
