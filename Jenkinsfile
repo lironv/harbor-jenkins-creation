@@ -13,16 +13,19 @@ pipeline {
     }
     stage('Test image') {   
       steps {
-      app.inside {            
-      sh 'echo "Tests passed"'        
-      }
+        script {
+
+          app.inside {            
+          sh 'echo "Tests passed"'        
+          }
+        }
       }    
         }     
     stage('Push image') {
       steps {
-      docker.withRegistry('https://core.harbor.domain', 'harbor admin') {            
-        app.push("${env.BUILD_NUMBER}")            
-        app.push("latest")        
+        docker.withRegistry('https://core.harbor.domain', 'harbor admin') {            
+          app.push("${env.BUILD_NUMBER}")            
+          app.push("latest")        
       }
       }    
            }
