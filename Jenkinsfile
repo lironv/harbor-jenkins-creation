@@ -4,8 +4,8 @@ pipeline {
 
     environment {
         DOCKER_REGISTRY = "core.harbor.domain"
-        DOCKER_REGISTRY_USER = credentials('admin')
-        DOCKER_REGISTRY_PASSWORD = credentials('nJIQqYVVQh')
+        DOCKER_REGISTRY_USER = credentials('lironv')
+        DOCKER_REGISTRY_PASSWORD = credentials('Qweasdzxc1')
         IMAGE_NAME = "own-image"
         IMAGE_TAG = "latest"
         DOCKERFILE_PATH = "./Dockerfile"
