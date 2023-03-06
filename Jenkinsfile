@@ -6,7 +6,7 @@ node {
             checkout scm    
       }     
       stage('Build image') {         
-       
+            sh 'sudo yum install -y docker'
             app = docker.build("Dockerfile", "./")    
        }     
       stage('Test image') {           
