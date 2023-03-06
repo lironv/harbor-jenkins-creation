@@ -3,9 +3,9 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_REGISTRY = "harbor.example.com"
-        DOCKER_REGISTRY_USER = credentials('harbor-user')
-        DOCKER_REGISTRY_PASSWORD = credentials('harbor-password')
+        DOCKER_REGISTRY = "core.harbor.domain"
+        DOCKER_REGISTRY_USER = credentials('admin')
+        DOCKER_REGISTRY_PASSWORD = credentials('nJIQqYVVQh')
         IMAGE_NAME = "own-image"
         IMAGE_TAG = "latest"
         DOCKERFILE_PATH = "./Dockerfile"
