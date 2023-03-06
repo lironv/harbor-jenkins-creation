@@ -5,8 +5,9 @@ pipeline {
      
     stage('Build image') {        
       steps {
-        script {
-          def customImage = docker.build("my-image:${env.BUILD_ID}")
+          withCredentials([dockerRegistryCredentials(credentialsId: 'docker-creds', url: 'https://core.harbor.domain')]) {
+            docker.build("my-image:${env.BUILD_ID}")
+          }
         }
         
        }
