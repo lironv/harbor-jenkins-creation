@@ -5,20 +5,11 @@ pipeline {
     stage('Build image') {        
       steps {
          script {
-           app = docker.build("my-app-image:latest", "./")
+           app = docker.build("my-app-image:latest")
           }
        }
     }
     stage('Test image') {   
-
-    
-          
-            
-    
-
-          
-    
-    
   
       steps {
         script {
