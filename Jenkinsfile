@@ -6,7 +6,8 @@ pipeline {
     stage('Build image') {        
       steps {
           withCredentials([dockerRegistryCredentials(credentialsId: 'docker-creds', url: 'https://core.harbor.domain')]) {
-            docker.build("my-image:${env.BUILD_ID}")
+            sh 'docker build -t image:$BUILD_NUMBER .'
+           
           }
         }
     }
