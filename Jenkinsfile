@@ -14,7 +14,7 @@ pipeline {
       steps {
         script {
 
-          app.inside {            
+          customImage.inside {            
           sh 'echo "Tests passed"'        
           }
         }
@@ -24,8 +24,8 @@ pipeline {
       steps {
         script {
           docker.withRegistry('https://core.harbor.domain', 'harbor admin') {            
-            app.push("${env.BUILD_NUMBER}")            
-            app.push("latest")        
+            customImage.push("${env.BUILD_NUMBER}")            
+            customImage.push("latest")        
     } 
      }
       }    
