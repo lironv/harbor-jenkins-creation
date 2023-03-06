@@ -23,10 +23,12 @@ pipeline {
         }     
     stage('Push image') {
       steps {
-        docker.withRegistry('https://core.harbor.domain', 'harbor admin') {            
-          app.push("${env.BUILD_NUMBER}")            
-          app.push("latest")        
-      }
+        script {
+          docker.withRegistry('https://core.harbor.domain', 'harbor admin') {            
+            app.push("${env.BUILD_NUMBER}")            
+            app.push("latest")        
+    } 
+     }
       }    
            }
         }
