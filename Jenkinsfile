@@ -1,21 +1,21 @@
 
 pipeline {
   agent any  
-    stages {
+  stages {
      
-      stage('Build image') {         
-        sh 'sudo yum install -y docker'
-        app = docker.build("Dockerfile", "./")    
+    stage('Build image') {        
+      sh 'sudo yum install -y docker'
+      app = docker.build("Dockerfile", "./")    
        }     
-      stage('Test image') {           
-        app.inside {            
-        sh 'echo "Tests passed"'        
+    stage('Test image') {           
+      app.inside {            
+      sh 'echo "Tests passed"'        
             }    
         }     
-       stage('Push image') {
-         docker.withRegistry('https://core.harbor.domain', 'harbor admin') {            
-           app.push("${env.BUILD_NUMBER}")            
-           app.push("latest")        
+    stage('Push image') {
+      docker.withRegistry('https://core.harbor.domain', 'harbor admin') {            
+        app.push("${env.BUILD_NUMBER}")            
+        app.push("latest")        
               }    
            }
         }
