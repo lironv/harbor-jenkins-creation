@@ -6,7 +6,9 @@ pipeline {
     stage('Build image') {        
       steps {
         sh """pwd
-                		      docker build -t lironv/attendance:latest .
+              echo $PATH 
+              id
+              docker build -t lironv/attendance:latest .
            """
         
        }
