@@ -4,6 +4,9 @@ pipeline {
 
     stage('Build image') {        
       steps {
+        sh 'pwd'
+        sh 'whoami'
+        sh 'id'
         script {
           def customImage = docker.build("my-image:${env.BUILD_ID}")
         }
