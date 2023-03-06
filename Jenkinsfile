@@ -5,7 +5,7 @@ pipeline {
      
     stage('Build image') {        
       steps {
-        sh 'sudo yum install -y docker'
+        sh 'yum install -y docker'
          script {
            app = docker.build("my-app-image:latest", "./")
           }
