@@ -1,23 +1,28 @@
-
 pipeline {
   agent any  
   stages {
-     
+
     stage('Build image') {        
       steps {
-      withDockerContainer('my-image') {
-          sh 'docker build -t image:$BUILD_NUMBER .'
-      }            
-           
-          }
+        script {
+          def customImage = docker.build("my-image:${env.BUILD_ID}")
         }
+
+       }
+
     
-     
+          
+            
     
+
+          
+    
+    
+  
+    }
     stage('Test image') {   
       steps {
         script {
-
           customImage.inside {            
           sh 'echo "Tests passed"'        
           }
@@ -36,7 +41,3 @@ pipeline {
            }
         }
 }
-
-
-
-
