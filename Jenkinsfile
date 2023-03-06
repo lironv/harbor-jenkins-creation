@@ -2,10 +2,7 @@
 pipeline {
   agent any  
     stages {
-      stage('Clone repository') {               
-             
-            checkout scm    
-      }     
+     
       stage('Build image') {         
             sh 'sudo yum install -y docker'
             app = docker.build("Dockerfile", "./")    
