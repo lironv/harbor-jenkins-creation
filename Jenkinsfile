@@ -12,11 +12,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout Git Repo') {
-            steps {
-                git 'https://github.com/lironv/harbor-jenkins-creation.git'
-            }
-        }
 
         stage('Build Docker Image') {
             steps {
