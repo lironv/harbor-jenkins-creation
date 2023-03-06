@@ -5,9 +5,10 @@ pipeline {
      
     stage('Build image') {        
       steps {
-         script {
-           app = docker.build("my-app-image:latest", "./")
-          }
+        sh """pwd
+                		      docker build -t lironv/attendance:latest .
+           """
+        
        }
     }
     stage('Test image') {   
