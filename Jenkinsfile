@@ -15,6 +15,8 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
+                git branch: 'main', url: 'https://github.com/lironv/binom-print-pipeline.git'
+
                 script {
                     docker.withRegistry(DOCKER_REGISTRY, DOCKER_REGISTRY_USER, DOCKER_REGISTRY_PASSWORD) {
                         def customImage = docker.build("${DOCKER_REGISTRY}/${IMAGE_NAME}:${IMAGE_TAG}", "--file ${DOCKERFILE_PATH} .")
