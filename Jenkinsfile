@@ -1,33 +1,20 @@
-pipeline {
-  agent any  
-  stages {
+pipeline{
+	
+	agent any
 
-    stage('Build image') {        
-      steps {
-         script {
-           app = docker.build("my-app-image:latest")
-          }
-       }
-    }
-    stage('Test image') {   
-  
-      steps {
-        script {
-          app.inside {            
-          sh 'echo "Tests passed"'        
-          }
-        }
-      }    
-        }     
-    stage('Push image') {
-      steps {
-        script {
-          docker.withRegistry('https://core.harbor.domain', 'harbor admin') {            
-            app.push("${env.BUILD_NUMBER}")            
-            app.push("latest")        
-    } 
-     }
-      }    
-           }
-        }
-}
+
+	stages {
+
+		stage('Build') {
+			steps {
+			    sshagent(credentials: ['aws']) {
+                    sh 'ssh -o StrictHostKeyChecking=no ec2-user@44.211.185.222 "docker ; docker ps"'
+
+                }
+			   
+			}
+		}
+		
+	
+	}
+	}
