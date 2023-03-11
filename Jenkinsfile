@@ -37,7 +37,7 @@ pipeline {
     stage('Login-Into-Docker') {
       steps {
         container('docker') {
-          sh 'docker login 10.104.121.108 -u lironv -p Qweasdzxc1'
+          sh 'docker login 10.110.211.191 -u lironv -p Qweasdzxc1'
       }
     }
     }
