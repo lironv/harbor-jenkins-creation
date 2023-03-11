@@ -28,6 +28,8 @@ pipeline {
         container('docker') {
           sh 'docker build -t sample-image:latest .'
           sh 'docker tag sample-image:latest lironv/testing-image:latest'
+          sh 'docker tag sample-image:latest core.harbor.domain/jenkinspipe/image-push'
+
 
         }
       }
@@ -35,14 +37,15 @@ pipeline {
     stage('Login-Into-Docker') {
       steps {
         container('docker') {
-          sh 'docker login -u lironv -p Quiksilver1'
+          sh 'docker login core.harbor.domain -u lironv -p Qweasdzxc1'
+
       }
     }
     }
      stage('Push-Images-Docker-to-DockerHub') {
       steps {
         container('docker') {
-          sh 'docker push lironv/testing-image:latest'
+          sh 'docker push core.harbor.domain/jenkinspipe/image-push'
       }
     }
      }
