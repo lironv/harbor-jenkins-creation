@@ -27,6 +27,8 @@ pipeline {
       steps {
         container('docker') {
           sh 'docker build -t sample-image:latest .'
+          sh 'docker tag sample-image:latest lironv/testing-image:latest'
+
         }
       }
     }
