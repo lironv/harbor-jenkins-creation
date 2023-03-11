@@ -37,7 +37,7 @@ pipeline {
     stage('Login-Into-Docker') {
       steps {
         container('docker') {
-          sh 'docker login http://core.harbor.domain -u lironv -p Qweasdzxc1'
+          sh 'docker login core.harbor.domain -u lironv -p Qweasdzxc1'
 
       }
     }
